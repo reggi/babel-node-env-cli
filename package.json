@@ -1,0 +1,18 @@
+{
+  "name": "@reggi/babel-node-env-cli",
+  "version": "1.0.0",
+  "bin": {
+    "babel-node-env": "./node_modules/@babel/node/bin/babel-node.js"
+  },
+  "scripts": {
+    "copyhere": "cp ./node_modules/@babel/node/lib/_babel-node.js ./_babel-node.js",
+    "patchhere": "patch --forward ./_babel-node.js  ./_babel-node.patch",
+    "createpatch": "diff -u ./node_modules/@babel/node/lib/_babel-node.js ./_babel-node.js > _babel-node.patch",
+    "postinstall": "patch --forward ./node_modules/@babel/node/lib/_babel-node.js  ./_babel-node.patch || true"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/node": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42"
+  }
+}
